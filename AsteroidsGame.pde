@@ -11,8 +11,6 @@ public void draw()
   bob.move();
   bob.setDirectionX(0);
   bob.setDirectionY(0);
-  //bob.setX(400);
-  //bob.setY(400);
 }
 public void keyTyped()
 {
@@ -20,13 +18,10 @@ public void keyTyped()
   {
     bob.setX((int)(Math.random()*800));
     bob.setY((int)(Math.random()*800));
-    bob.setDirectionX(Math.random()*800);
-    bob.setDirectionY(Math.random()*800);
     bob.setPointDirection((int)(Math.random()*360));
   }
-  if (key == 'w')
-  {
-    bob.accelerate(2);
-    
-  }
+  if (key == 'w') {bob.accelerate(10);}
+  if (key == 'a') {}
+  if (key == 's') {bob.myPointDirection = bob.myPointDirection +1;}
+  if (key == 'd') {bob.myPointDirection = bob.myPointDirection -1;}
 }
