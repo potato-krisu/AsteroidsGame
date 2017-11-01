@@ -2,7 +2,6 @@ Spaceship bob = new Spaceship();
 public void setup() {
   size(800, 800);
   fill(0);
-  background(255);
   bob.setDirectionX(400);
   bob.setDirectionY(400);
 }
@@ -14,7 +13,7 @@ public void draw()
   bob.setDirectionX(0);
   bob.setDirectionY(0);
 }
-public void keyTyped()
+public void keyPressed()
 {
   if (key == 'r')
   {
@@ -22,13 +21,8 @@ public void keyTyped()
     bob.setY((int)(Math.random()*800));
     bob.setPointDirection((int)(Math.random()*360));
   }
-  if (key == 'w') {
-    bob.accelerate(20);
-  } else if (key == 'a') {
-    bob.myPointDirection += -10;
-  } else if (key == 's') {
-    
-  } else if (key == 'd') {
-    bob.myPointDirection += 10;
-  }
+  if (key == 'w') {bob.accelerate(10);}
+  else if (key == 'a') {bob.turn(-5);}
+  else if (key == 's') {bob.accelerate(-10);} 
+  else if (key == 'd') {bob.turn(5);}
 }
