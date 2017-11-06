@@ -1,6 +1,6 @@
 Spaceship bob = new Spaceship();
 public void setup() {
-  size(600, 600);
+  size(800, 600);
   bob.setDirectionX(300);
   bob.setDirectionY(300);
 }
@@ -16,7 +16,7 @@ public void keyPressed()
 {
   if (key == 'r')
   {
-    bob.setX((int)(Math.random()*600));
+    bob.setX((int)(Math.random()*800));
     bob.setY((int)(Math.random()*600));
     bob.setPointDirection((int)(Math.random()*360));
   }
