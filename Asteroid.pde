@@ -30,7 +30,7 @@ class Asteroid extends Floater
     yCorners[10] = 7;
   }
   public void move(){
-    myPointDirection+=5;
+    myPointDirection += ((int)(Math.random()*5));
     myCenterX += 2;    
     myCenterY += 2;
     if(myCenterX >width){myCenterX = 0;}    
