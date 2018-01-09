@@ -1,6 +1,4 @@
 Spaceship bob = new Spaceship();
-//Bullet bobbie = new Bullet(bob);
-//Asteroid [] belt = new Asteroid[10];
 Stars[] sky = new Stars[500];
 ArrayList <Asteroid> belt = new ArrayList <Asteroid>();
 ArrayList <Bullet> pew = new ArrayList <Bullet>();
@@ -22,7 +20,7 @@ public void setup()
 }
 public void draw() 
 {
-  background(106, 94, 135);
+  background(0);
   for (int i = 0; i < sky.length; i++) //show stars
   {
     sky[i].show();
