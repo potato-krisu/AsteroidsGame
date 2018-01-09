@@ -10,23 +10,25 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   abstract public void setX(int x);  
   abstract public int getX();   
   abstract public void setY(int y);   
-  abstract public int getY();   
+  abstract public int getY();
   abstract public void setDirectionX(double x);   
   abstract public double getDirectionX();   
   abstract public void setDirectionY(double y);   
-  abstract public double getDirectionY();
+  abstract public double getDirectionY();   
   abstract public void setPointDirection(int degrees);   
   abstract public double getPointDirection(); 
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
-  public void accelerate (double dAmount){          
+  public void accelerate (double dAmount)   
+  {          
     //convert the current direction the floater is pointing to radians    
     double dRadians =myPointDirection*(Math.PI/180);     
     //change coordinates of direction of travel    
     myDirectionX += ((dAmount) * Math.cos(dRadians));    
     myDirectionY += ((dAmount) * Math.sin(dRadians));       
   }   
-  public void turn (int nDegreesOfRotation){     
+  public void turn (int nDegreesOfRotation)   
+  {     
     //rotates the floater by a given number of degrees    
     myPointDirection+=nDegreesOfRotation;   
   }   
@@ -37,24 +39,28 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     myCenterY += myDirectionY;     
 
     //wrap around screen    
-    if(myCenterX >width){     
+    if(myCenterX >width)
+    {     
       myCenterX = 0;    
     }    
-    else if (myCenterX<0){     
+    else if (myCenterX<0)
+    {     
       myCenterX = width;    
     }    
-    if(myCenterY >height){    
+    if(myCenterY >height)
+    {    
       myCenterY = 0;    
     } 
     
-    else if (myCenterY < 0){     
+    else if (myCenterY < 0)
+    {     
       myCenterY = height;    
     }   
   }   
   public void show ()  //Draws the floater at the current position  
   {             
-    fill(myColor);   
-    stroke(myColor);    
+    fill(255);   
+    stroke(255);    
     
     //translate the (x,y) center of the ship to the correct position
     translate((float)myCenterX, (float)myCenterY);

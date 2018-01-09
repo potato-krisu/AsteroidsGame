@@ -1,43 +1,79 @@
 Spaceship bob = new Spaceship();
-Asteroid[] a = new Asteroid[10];
-public void setup() {
-  size(800, 600);
-  bob.setDirectionX(400);
-  bob.setDirectionY(300);
-  for (int i = 0; i < 10; i++)
+//Bullet bobbie = new Bullet(bob);
+//Asteroid [] belt = new Asteroid[10];
+Stars[] sky = new Stars[500];
+ArrayList <Asteroid> belt = new ArrayList <Asteroid>();
+ArrayList <Bullet> pew = new ArrayList <Bullet>();
+public void setup() 
+{
+  size(900, 600);
+  for (int i = 0; i < sky.length; i++)//make stars
   {
-    a[i] = new Asteroid();
-    a[i].setX((int)(Math.random()*800));
-    a[i].setY((int)(Math.random()*600));
+    sky[i] = new Stars();
+  }  
+  for (int i = 0; i < 5; i++)
+  {
+    belt.add(new Asteroid());
+  }
+  for (int i = 0; i < pew.size(); i++)
+  {
+    pew.add(new Bullet(bob));
   }
 }
 public void draw() 
 {
-  background(0);
+  background(106, 94, 135);
+  for (int i = 0; i < sky.length; i++) //show stars
+  {
+    sky[i].show();
+  }
+  for (int i = 0; i < belt.size(); i++)
+  {
+    belt.get(i).show();
+    belt.get(i).move();
+
+    for (int j = 0; j < pew.size()-1; j++)
+    {
+      if (dist(pew.get(j).getX(), pew.get(j).getY(), belt.get(i).getX(), belt.get(i).getY()) < 30)
+      {
+        belt.remove(i);
+      }
+    }
+  }
+
+  if (belt.size() <7)
+  {
+    belt.add(new Asteroid());
+  }
+
   bob.show();
   bob.move();
-  bob.setDirectionX(0);
-  bob.setDirectionY(0);
-  for (int i = 0; i < 10; i++)
+
+  for (int i = 0; i < pew.size(); i++)
   {
-    a[i].show();
-    a[i].move();
+    pew.get(i).move();
+    pew.get(i).show();
   }
 }
-public void keyPressed()
+
+public void keyTyped()
 {
-  if (key == 'r')
+  //hyperspace
+  if (key == 'h')
   {
-    bob.setX((int)(Math.random()*800));
+    bob.setX((int)(Math.random()*900));
     bob.setY((int)(Math.random()*600));
-    bob.setPointDirection((int)(Math.random()*360));
-  } else if (key == 'w') {
-    bob.accelerate(10);
+    bob.setDirectionX(450);
+    bob.setDirectionY(300);
+  }  
+  //other movements
+  else if (key == 'w') {
+    bob.accelerate(1);
   } else if (key == 'a') {
-    bob.turn(-5);
-  } else if (key == 's') {
-    bob.accelerate(-10);
+    bob.turn(-15);
   } else if (key == 'd') {
-    bob.turn(5);
+    bob.turn(15);
+  } else if (key == 32) {
+    pew.add(new Bullet(bob));
   }
 }
